@@ -1,0 +1,18 @@
+.left-side
+  %img{:src => "/images/#{@file_name}", :width => '520'}
+
+
+.right-side
+  
+  %img{:src => "/images/#{@file_name}", :width => '120'}
+  
+  %table
+    - (@photo.tags.compact - ['ExifToolVersion', 'Filename', 'Directory']).each do |tag|
+      %tr
+        %td= tag.ljust(28)
+        %td= @photo[tag]
+  
+  %h3 Upload another image
+  = form_tag '/upload', :multipart => true do
+    = file_field_tag :image
+    = submit_tag 'Upload'

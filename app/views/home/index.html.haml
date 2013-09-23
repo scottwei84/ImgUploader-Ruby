@@ -1,0 +1,4 @@
+%h3 Upload Image
+= form_tag '/upload', :multipart => true do
+  = file_field_tag :image
+  = submit_tag 'Upload'
